@@ -1,15 +1,7 @@
-[phases.setup]
-nixPkgs = ["python3", "gcc"]
-
 [phases.install]
+# Добавили '3' к python и pip
 cmds = ["cd backend && python3 -m pip install -r requirements.txt"]
 
 [start]
-cmd = "cd backend && python3 -m uvicorn main:app --host 0.0.0.0 --port ${PORT}"   
-
-
-
-
-
-
-
+# Убрали --reload и поправили команду запуска
+cmd = "cd backend && python3 -m uvicorn main:app --host 0.0.0.0 --port ${PORT}"
