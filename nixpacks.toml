@@ -2,10 +2,8 @@
 nixPkgs = ["(python310.withPackages (ps: [ps.pip]))"]
 
 [phases.install]
-# Устанавливаем зависимости (теперь просто через путь)
 cmds = ["python3 -m pip install -r backend/requirements.txt"]
 
 [start]
-# 1. Добавляем текущую директорию/backend в PYTHONPATH, чтобы импорты работали
-# 2. Запускаем uvicorn, указывая путь к приложению
-cmd = "PYTHONPATH=$PYTHONPATH:$(pwd)/backend python3 -m uvicorn backend.main:app --host 0.0.0.0 --port ${PORT}"
+# Сначала заходим в папку backend, чтобы пути к JSON и БД внутри кода сработали правильно
+cmd = "cd backend && uvicorn main:app --host 0.0.0.0 --port ${PORT}"
