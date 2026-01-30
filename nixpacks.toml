@@ -2,14 +2,8 @@
 nixPkgs = ["(python310.withPackages (ps: [ps.pip]))"]
 
 [phases.install]
-# Мы выведем текущую папку, список файлов и попробуем найти файл через поиск
-cmds = [
-    "pwd",
-    "ls -la",
-    "ls -la backend",
-    "find . -name 'requirements.txt'",
-    "python3 -m pip install -r backend/requirements.txt"
-]
+# Команды через && гарантируют выполнение по порядку
+cmds = ["pwd && ls -la && ls -la backend && find . -name 'requirements.txt' && python3 -m pip install -r backend/requirements.txt"]
 
 [start]
 cmd = "python3 -m uvicorn backend.main:app --host 0.0.0.0 --port ${PORT}"
