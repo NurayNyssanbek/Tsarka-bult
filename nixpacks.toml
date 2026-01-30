@@ -2,9 +2,14 @@
 nixPkgs = ["(python310.withPackages (ps: [ps.pip]))"]
 
 [phases.install]
-# Используем прямой путь к файлу вместо перехода в папку
-cmds = ["python3 -m pip install -r backend/requirements.txt"]
+# Мы выведем текущую папку, список файлов и попробуем найти файл через поиск
+cmds = [
+    "pwd",
+    "ls -la",
+    "ls -la backend",
+    "find . -name 'requirements.txt'",
+    "python3 -m pip install -r backend/requirements.txt"
+]
 
 [start]
-# Здесь тоже можно попробовать запуск из корня, если cd барахлит
 cmd = "python3 -m uvicorn backend.main:app --host 0.0.0.0 --port ${PORT}"
