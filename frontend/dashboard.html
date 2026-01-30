@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Phishing Awareness</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="dashboard.html">Dashboard</a>
+    <span class="user" id="navUser">Loading...</span>
+    <a href="index.html" id="logoutLink">Log out</a>
+  </nav>
+
+  <div class="container">
+    <div class="dash-hero">
+      <h1>Your scan results</h1>
+      <p>Progress and history from phishing awareness training.</p>
+    </div>
+
+    <div id="stats" class="stats-grid">
+      <!-- Filled by JS -->
+    </div>
+
+    <div class="cta-strip">
+      <h2>Start training</h2>
+      <p>Classify intercepted messages as phishing or legitimate.</p>
+      <a href="training.html" class="btn btn-primary">Run scan</a>
+    </div>
+
+    <div class="history-strip">
+      <h2>Recent verdicts</h2>
+      <div id="history">No verdicts yet. Run a scan to see history.</div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

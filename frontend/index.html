@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Awareness — Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <div class="container">
+    <div class="auth-block">
+      <h1>Phishing Awareness</h1>
+      <p class="text-muted mt-1">Log in to continue.</p>
+
+      <div id="message" class="alert hidden"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Username or email</label>
+          <input type="text" id="username" name="username" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </form>
+    </div>
+    <p class="footer-link">
+      No account? <a href="register.html">Register</a>
+    </p>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    redirectIfLoggedIn();
+    const form = document.getElementById("loginForm");
+    const messageEl = document.getElementById("message");
+    function showMessage(text, type) {
+      messageEl.textContent = text;
+      messageEl.className = "alert alert-" + (type || "error");
+      messageEl.classList.remove("hidden");
+    }
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      try {
+        const res = await fetch(API_BASE + "/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          showMessage(data.detail || "Login failed.", "error");
+          return;
+        }
+        setToken(data.access_token);
+        setUser(data.user);
+        window.location.href = "dashboard.html";
+      } catch (err) {
+        showMessage("Network error. Is the backend running?", "error");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,576 @@
+/*
+  Phishing Awareness Training — CREATIVE UI
+  "Intercepted transmission" / intel briefing. No cards, no dashboard grid.
+  Sharp edges, monospace data, full-bleed zones.
+*/
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --bg: #0a0c10;
+  --bg-stripe: #0d0f14;
+  --ink: #e2e8f0;
+  --ink-dim: #94a3b8;
+  --ink-muted: #64748b;
+  --accent: #22d3ee;
+  --accent-dim: #0891b2;
+  --phish: #f43f5e;
+  --phish-dim: #be123c;
+  --safe: #34d399;
+  --safe-dim: #059669;
+  --warn: #fbbf24;
+  --font-ui: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --sharp: 0;
+  --hair: 1px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-image: linear-gradient(135deg, var(--bg) 0%, var(--bg-stripe) 50%, var(--bg) 100%);
+}
+
+/* ----- Layout: no generic "container" card ----- */
+.container {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: var(--space-4);
+}
+
+/* ----- Nav: thin strip, minimal ----- */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: transparent;
+  border-bottom: var(--hair) solid rgba(34, 211, 238, 0.2);
+}
+
+.nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.nav a:hover {
+  color: var(--ink);
+}
+
+.nav .user {
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+}
+
+/* ----- Typography ----- */
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-2);
+}
+
+h2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-dim);
+  margin-bottom: var(--space-2);
+}
+
+/* ----- Forms (auth): sharp block, accent edge ----- */
+.form-group {
+  margin-bottom: var(--space-3);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  border: var(--hair) solid var(--ink-muted);
+  border-radius: var(--sharp);
+  background: rgba(15, 23, 42, 0.6);
+  color: var(--ink);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
+}
+
+/* ----- Buttons: keep for auth & secondary ----- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-ui);
+  border: none;
+  border-radius: var(--sharp);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: filter 0.15s, transform 0.05s;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  width: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border: var(--hair) solid var(--ink-muted);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-success { background: var(--safe); color: var(--bg); }
+.btn-danger { background: var(--phish); color: #fff; }
+
+/* ----- Auth: no card, sharp block with accent bar ----- */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.auth-block {
+  border-left: 4px solid var(--accent);
+  border: var(--hair) solid rgba(34, 211, 238, 0.25);
+  border-left-width: 4px;
+  border-left-color: var(--accent);
+  padding: var(--space-5);
+  max-width: 22rem;
+  margin: 0 auto var(--space-4);
+}
+
+.auth-block h1 {
+  font-size: 1.25rem;
+  text-transform: none;
+}
+
+.auth-page .form-group:last-of-type {
+  margin-bottom: var(--space-4);
+}
+
+.auth-page a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.auth-page a:hover {
+  text-decoration: underline;
+}
+
+.auth-page .footer-link {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+/* ----- Alerts ----- */
+.alert {
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+  font-size: 0.9rem;
+  border-radius: var(--sharp);
+  border: var(--hair) solid;
+}
+
+.alert-error {
+  background: rgba(244, 63, 94, 0.1);
+  border-color: var(--phish);
+  color: #fda4af;
+}
+
+.alert-success {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: var(--safe);
+  color: #6ee7b7;
+}
+
+.alert-info {
+  background: rgba(34, 211, 238, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ========== TRAINING: transmission + decision zones ========== */
+.training-header {
+  margin-bottom: var(--space-4);
+}
+
+.training-header h1 {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.training-header p {
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+  margin-top: var(--space-1);
+}
+
+.training-progress {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  margin-top: var(--space-2);
+}
+
+/* ----- Message block: intercepted transmission (no card) ----- */
+.transmission {
+  border-left: 4px solid var(--accent);
+  background: rgba(15, 23, 42, 0.5);
+  margin-bottom: var(--space-5);
+  overflow: hidden;
+}
+
+.transmission .transmission-label {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  padding: var(--space-2) var(--space-4);
+  border-bottom: var(--hair) solid rgba(34, 211, 238, 0.2);
+}
+
+.transmission .email-header {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--ink-dim);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--hair) solid rgba(100, 116, 139, 0.3);
+}
+
+.transmission .email-header .label {
+  color: var(--ink-muted);
+  margin-right: var(--space-2);
+}
+
+.transmission .email-subject {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--hair) solid rgba(100, 116, 139, 0.2);
+}
+
+.transmission .email-body {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: var(--space-4);
+  color: var(--ink);
+}
+
+/* ----- Decision: two full-width zones (not buttons) ----- */
+.decision-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-3);
+  text-align: center;
+}
+
+.decision-zones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--hair);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.decision-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5rem;
+  padding: var(--space-4);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.15s, opacity 0.15s;
+  font-family: var(--font-ui);
+}
+
+.decision-zone:active {
+  transform: scale(0.98);
+}
+
+.decision-zone:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.decision-zone--phish {
+  background: var(--phish);
+  color: #fff;
+}
+
+.decision-zone--phish:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+
+.decision-zone--safe {
+  background: var(--safe);
+  color: var(--bg);
+}
+
+.decision-zone--safe:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+/* ----- Result feedback: full-width strip ----- */
+.result-feedback {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  font-size: 0.95rem;
+  border-radius: var(--sharp);
+  border-left: 4px solid;
+}
+
+.result-feedback.correct {
+  background: rgba(52, 211, 153, 0.08);
+  border-left-color: var(--safe);
+  color: #6ee7b7;
+}
+
+.result-feedback.incorrect {
+  background: rgba(244, 63, 94, 0.08);
+  border-left-color: var(--phish);
+  color: #fda4af;
+}
+
+.result-feedback .risk {
+  margin-top: var(--space-2);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--ink-muted);
+}
+
+.training-next-wrap {
+  margin-top: var(--space-4);
+  text-align: center;
+}
+
+.training-next-wrap .btn {
+  min-width: 14rem;
+}
+
+/* No emails / loading: minimal block ----- */
+.empty-state {
+  border-left: 4px solid var(--ink-muted);
+  padding: var(--space-5);
+  text-align: center;
+  color: var(--ink-dim);
+}
+
+.empty-state .btn {
+  margin-top: var(--space-3);
+}
+
+/* ========== DASHBOARD: ribbon, no card grid ========== */
+.dash-hero {
+  margin-bottom: var(--space-5);
+}
+
+.dash-hero h1 {
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dash-hero p {
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+  margin-top: var(--space-1);
+}
+
+/* Stats: single ribbon line ----- */
+.stats-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: baseline;
+  padding: var(--space-4) 0;
+  border-bottom: var(--hair) solid rgba(34, 211, 238, 0.2);
+  margin-bottom: var(--space-5);
+}
+
+.stats-ribbon .stat {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.stats-ribbon .stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  margin-left: var(--space-1);
+}
+
+/* CTA: full-width strip with accent ----- */
+.cta-strip {
+  border-left: 4px solid var(--accent);
+  background: rgba(15, 23, 42, 0.5);
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.cta-strip h2 {
+  margin-bottom: var(--space-2);
+}
+
+.cta-strip p {
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-3);
+}
+
+.cta-strip .btn {
+  display: inline-flex;
+}
+
+/* History: list with accent per item ----- */
+.history-strip h2 {
+  margin-bottom: var(--space-3);
+}
+
+.history-item {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  padding: var(--space-2) 0;
+  border-bottom: var(--hair) solid rgba(100, 116, 139, 0.2);
+  color: var(--ink-dim);
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+/* Fallbacks for old class names (JS still uses .card in some places) ----- */
+.card {
+  border-left: 4px solid var(--accent);
+  background: rgba(15, 23, 42, 0.5);
+  border: var(--hair) solid rgba(34, 211, 238, 0.2);
+  border-left-width: 4px;
+  border-left-color: var(--accent);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-radius: var(--sharp);
+}
+
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.stat-card {
+  padding: var(--space-3);
+  border-left: 3px solid var(--accent);
+  background: rgba(15, 23, 42, 0.4);
+  min-width: 8rem;
+}
+
+.stat-card .value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
+
+.stat-card .label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  margin-top: var(--space-1);
+}
+
+/* Utility ----- */
+.text-muted {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.mt-1 { margin-top: var(--space-2); }
+.mt-2 { margin-top: var(--space-3); }
+.mb-1 { margin-bottom: var(--space-2); }
+
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Awareness — Register</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <div class="container">
+    <div class="auth-block">
+      <h1>Create account</h1>
+      <p class="text-muted mt-1">Register to start training.</p>
+
+      <div id="message" class="alert hidden"></div>
+
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required autocomplete="username" minlength="2">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required autocomplete="new-password" minlength="6">
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+    </div>
+    <p class="footer-link">
+      Have an account? <a href="index.html">Log in</a>
+    </p>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    redirectIfLoggedIn();
+    const form = document.getElementById("registerForm");
+    const messageEl = document.getElementById("message");
+    function showMessage(text, type) {
+      messageEl.textContent = text;
+      messageEl.className = "alert alert-" + (type || "error");
+      messageEl.classList.remove("hidden");
+    }
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      try {
+        const res = await fetch(API_BASE + "/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, email, password }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          showMessage(data.detail || "Registration failed.", "error");
+          return;
+        }
+        setToken(data.access_token);
+        setUser(data.user);
+        window.location.href = "dashboard.html";
+      } catch (err) {
+        showMessage("Network error. Is the backend running?", "error");
+      }
+    });
+  </script>
+</body>
+</html>
