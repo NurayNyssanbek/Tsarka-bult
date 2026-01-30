@@ -1,7 +1,11 @@
+[phases.setup]
+# Явно говорим установить Python
+nixPkgs = ["python3"]
+
 [phases.install]
-# Добавили '3' к python и pip
+# Устанавливаем зависимости
 cmds = ["cd backend && python3 -m pip install -r requirements.txt"]
 
 [start]
-# Убрали --reload и поправили команду запуска
+# Запускаем сервер
 cmd = "cd backend && python3 -m uvicorn main:app --host 0.0.0.0 --port ${PORT}"
