@@ -1,0 +1,13 @@
+# Phishing Awareness Training - Backend Dependencies
+# Install with: pip install -r requirements.txt
+
+fastapi==0.109.0          # Modern async web framework
+uvicorn[standard]==0.27.0 # ASGI server to run FastAPI
+sqlalchemy==2.0.25        # ORM for database operations
+python-jose[cryptography]==3.3.0  # JWT token creation/validation
+passlib[bcrypt]==1.7.4    # Secure password hashing (bcrypt)
+bcrypt==4.1.2             # bcrypt algorithm
+pydantic==2.5.3           # Data validation (used by FastAPI)
+pydantic-settings==2.1.0  # Settings management
+python-multipart==0.0.6   # Form data parsing
+email-validator==2.1.0    # Email validation for Pydantic EmailStr

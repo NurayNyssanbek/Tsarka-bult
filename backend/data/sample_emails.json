@@ -1,0 +1,74 @@
+[
+  {
+    "subject": "Urgent: Verify your account immediately",
+    "sender": "security@paypa1-secure.com",
+    "body": "Dear Customer,\n\nWe have detected unusual activity on your account. Your account has been temporarily suspended.\n\nClick here to verify your identity: http://paypa1-secure.com/verify\n\nYou must act now - your account will be permanently locked in 24 hours.\n\nBest regards,\nPayPal Security Team",
+    "is_phishing": true
+  },
+  {
+    "subject": "Your package delivery update",
+    "sender": "notifications@fedex.com",
+    "body": "Hi,\n\nYour package #12345678 is out for delivery today.\n\nTrack your shipment: https://www.fedex.com/track\n\nIf you have questions, visit our Help Center at fedex.com/help.\n\nThank you for choosing FedEx.",
+    "is_phishing": false
+  },
+  {
+    "subject": "Congratulations! You have won $1,000,000",
+    "sender": "winner@lottery-international.tk",
+    "body": "Dear User,\n\nCongratulations! You have been selected as a winner in our international lottery.\n\nTo claim your prize of $1,000,000, you must respond within 48 hours and provide your bank details for wire transfer.\n\nClick here to claim now: http://lottery-international.tk/claim\n\nLimited time offer. Act now!\n\nLottery International",
+    "is_phishing": true
+  },
+  {
+    "subject": "Meeting reminder: Project review tomorrow at 10am",
+    "sender": "calendar@company.com",
+    "body": "Hi team,\n\nThis is a reminder that we have the project review meeting tomorrow (Tuesday) at 10:00 AM in Conference Room B.\n\nPlease bring your updated slides. Let me know if you cannot make it.\n\nThanks,\nSarah",
+    "is_phishing": false
+  },
+  {
+    "subject": "Security Alert: Unusual sign-in activity",
+    "sender": "noreply@accounts-google.verify-now.ga",
+    "body": "Dear Account Holder,\n\nWe noticed a sign-in from a new device. If this was you, no action is needed.\n\nIf not, verify your identity immediately: https://accounts-google.verify-now.ga/secure\n\nYour account may be suspended if you do not verify within 24 hours.\n\nGoogle Account Team",
+    "is_phishing": true
+  },
+  {
+    "subject": "Your monthly statement is ready",
+    "sender": "statements@bank.com",
+    "body": "Hello,\n\nYour monthly account statement for January is now available.\n\nLog in to Online Banking at https://www.bank.com (always check the URL) to view your statement.\n\nWe never ask for your password via email. If you have questions, call the number on the back of your card.\n\nBank Customer Service",
+    "is_phishing": false
+  },
+  {
+    "subject": "Your Apple ID has been locked",
+    "sender": "no-reply@apple-id-secure.tk",
+    "body": "Dear Customer,\n\nYour Apple ID has been locked due to suspicious activity. You must verify your account within 24 hours or it will be permanently disabled.\n\nVerify now: http://apple-id-secure.tk/restore\n\nDo not reply to this email. Apple will never ask for your password by email.\n\nApple Support",
+    "is_phishing": true
+  },
+  {
+    "subject": "HR: Benefits enrollment deadline Friday",
+    "sender": "hr@yourcompany.com",
+    "body": "Hi everyone,\n\nReminder: Open enrollment for health benefits ends this Friday at 5 PM.\n\nLog in to the employee portal at https://hr.yourcompany.com (use your normal work login) to make your selections.\n\nQuestions? Reply to this email or stop by HR.\n\nHR Team",
+    "is_phishing": false
+  },
+  {
+    "subject": "You have a pending refund - confirm your details",
+    "sender": "refunds@amaz0n-support.ga",
+    "body": "Hello,\n\nWe are processing a refund of $89.99 to your account. To complete the refund we need you to confirm your payment method.\n\nClick here to confirm: https://amaz0n-support.ga/refund-confirm\n\nThis link expires in 12 hours. Do not share it with anyone.\n\nAmazon Customer Service",
+    "is_phishing": true
+  },
+  {
+    "subject": "Invoice #4521 from Acme Corp",
+    "sender": "billing@acmecorp.com",
+    "body": "Hi,\n\nPlease find attached invoice #4521 for services rendered in January.\n\nPayment is due within 30 days. You can pay online at https://acmecorp.com/pay or by check to the address on the invoice.\n\nIf you have any questions, reply to this email.\n\nBilling Department\nAcme Corp",
+    "is_phishing": false
+  },
+  {
+    "subject": "IMPORTANT: Your Netflix account will be closed",
+    "sender": "billing@netflx-billing.tk",
+    "body": "Dear Member,\n\nWe were unable to process your payment. Your Netflix account will be closed in 48 hours unless you update your billing information.\n\nUpdate now: http://netflx-billing.tk/update\n\nWe will never ask for your password in an email. If you did not request this, ignore this message.\n\nNetflix Billing",
+    "is_phishing": true
+  },
+  {
+    "subject": "Password reset request",
+    "sender": "security@company.com",
+    "body": "Hi,\n\nYou requested a password reset for your company account. If you did not request this, you can safely ignore this email.\n\nTo reset your password, use this link (expires in 1 hour): https://company.com/reset-password?token=xxxx\n\nAlways type company.com yourself or use the link from our official app. We never send password links from other domains.\n\nIT Security",
+    "is_phishing": false
+  }
+]
