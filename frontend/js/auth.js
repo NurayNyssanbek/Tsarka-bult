@@ -6,8 +6,7 @@ const AUTH_TOKEN_KEY = "phishing_training_token";
 const AUTH_USER_KEY = "phishing_training_user";
 
 // Base URL of the backend API (change if you run backend elsewhere)
-const API_BASE = "http://localhost:8000/api";
-
+const API_BASE = "https://tsarka-bult-tsarka-bult-tried.fin1.bult.app/c/Users/user/Desktop/Tsarka-bult/api";
 function getToken() {
   return localStorage.getItem(AUTH_TOKEN_KEY);
 }
