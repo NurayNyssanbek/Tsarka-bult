@@ -14,7 +14,11 @@ COPY . .
 RUN touch backend/__init__.py
 
 # Переходим в backend для запуска
-WORKDIR /app/backend
+# Устанавливаем рабочую директорию в корень проекта
+WORKDIR /app
 
-# Запускаем сервер
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Копируем всё содержимое проекта
+COPY . .
+
+# Запускаем, указывая путь к main через точку
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8080"]
