@@ -2,5 +2,5 @@
 cmds = ["pip install -r backend/requirements.txt"]
 
 [start]
-# Переходим в backend, добавляем текущую папку в пути поиска Python и запускаем
-cmd = "cd backend && PYTHONPATH=. uvicorn main:app --host 0.0.0.0 --port ${PORT}"
+# Мы заходим в backend, чтобы импорты 'from database' заработали
+cmd = "cd backend && uvicorn main:app --host 0.0.0.0 --port ${PORT}"
