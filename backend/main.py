@@ -62,3 +62,8 @@ def root():
         "docs": "/docs",
         "version": "1.0.0",
     }
+
+frontend_dir = os.path.join(os.path.dirname(os.getcwd()), "frontend")
+
+if os.path.exists(frontend_dir):
+    app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")
