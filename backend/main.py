@@ -3,6 +3,7 @@ Phishing Awareness Training - FastAPI Backend Entry Point.
 """
 import os
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -33,7 +34,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS: разрешаем всем (важно для работы фронтенда из разных мест)
+# CORS: разрешаем всем
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], 
@@ -42,21 +43,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 1. Сначала подключаем API (чтобы запросы к /api/... работали)
+# 1. Сначала подключаем API
 app.include_router(auth.router, prefix="/api")
 app.include_router(emails.router, prefix="/api")
 app.include_router(results.router, prefix="/api")
 
-# 2. Подключаем статику (Фронтенд)
-# Мы ищем папку 'frontend', которая лежит на один уровень выше папки 'backend'
-frontend_dir = os.path.join(os.path.dirname(os.getcwd()), "frontend")
+# 2. ИСПРАВЛЕННЫЙ ПУТЬ К ФРОНТЕНДУ
+BASE_DIR = Path(__file__).resolve().parent.parent  # Корень репозитория
+frontend_dir = BASE_DIR / "frontend"
 
 if os.path.exists(frontend_dir):
-    print(f"Mounting frontend from: {frontend_dir}")
-    app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")
+    print(f"✅ Frontend found at: {frontend_dir}")
+    app.mount("/", StaticFiles(directory=str(frontend_dir), html=True), name="frontend")
 else:
-    print(f"WARNING: Frontend directory NOT found at {frontend_dir}")
-    # Заглушка на случай, если фронтенд не найден
+    print(f"❌ WARNING: Frontend NOT found at {frontend_dir}")
+    
     @app.get("/")
     def root():
         return {"message": "API is working, but frontend folder was not found."}
