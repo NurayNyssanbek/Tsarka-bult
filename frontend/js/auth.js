@@ -7,7 +7,7 @@ const AUTH_USER_KEY = "phishing_training_user";
 
 // Base URL of the backend API (change if you run backend elsewhere)
 // ПРАВИЛЬНЫЙ ВАРИАНТ:
-const API_BASE = "https://tsarka-bult-longer-machinery-bar.fin1.bult.app/api";
+const API_BASE = "/api";
 function getToken() {
   return localStorage.getItem(AUTH_TOKEN_KEY);
 }
