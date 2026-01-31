@@ -1,11 +1,14 @@
 [phases.setup]
-# Устанавливаем Python и pip через пакеты nix
 nixPkgs = ["python311", "python311Packages.pip"]
 
 [phases.install]
-# Используем pip напрямую, так как мы его установили выше
+# Устанавливаем зависимости напрямую через pip
 cmds = ["pip install -r backend/requirements.txt"]
 
+[phases.build]
+# Добавляем пустой __init__, если его вдруг нет, прямо при сборке
+cmds = ["touch backend/__init__.py"]
+
 [start]
-# Заходим в папку и запускаем uvicorn
-cmd = "cd backend && uvicorn main:app --host 0.0.0.0 --port ${PORT}"
+# Заходим в папку и запускаем uvicorn через python3 -m
+cmd = "cd backend && python3 -m uvicorn main:app --host 0.0.0.0 --port ${PORT}"
