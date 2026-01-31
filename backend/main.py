@@ -48,7 +48,22 @@ app.add_middleware(
 app.include_router(auth.router, prefix="/api")
 app.include_router(emails.router, prefix="/api")
 app.include_router(results.router, prefix="/api")
+# ... после всех app.include_router() ...
 
+# ДИАГНОСТИКА - временный эндпоинт
+@app.get("/check-files")
+async def check_files():
+    import os
+    current = Path(os.getcwd())
+    return {
+        "current_dir": str(current),
+        "contents": os.listdir(current),
+        "backend_exists": os.path.exists("backend"),
+        "frontend_exists": os.path.exists("frontend"),
+        "files_in_root": os.listdir(".") if os.path.exists(".") else []
+    }
+
+# ... дальше код с frontend_dir ...
 # 2. ПОДКЛЮЧЕНИЕ ФРОНТЕНДА - РАБОЧАЯ ВЕРСИЯ ДЛЯ BULT.AI
 # В Bult.ai контейнер запускается с рабочей директорией в корне репозитория
 current_dir = Path(os.getcwd())  # Корень репозитория в контейнере
