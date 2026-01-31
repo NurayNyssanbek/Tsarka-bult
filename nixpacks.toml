@@ -1,6 +1,8 @@
+[phases.setup]
+nixPkgs = ["python311"]
+
 [phases.install]
-cmds = ["pip install -r backend/requirements.txt"]
+cmds = ["python3 -m pip install -r backend/requirements.txt"]
 
 [start]
-# Мы заходим в backend, чтобы импорты 'from database' заработали
-cmd = "cd backend && uvicorn main:app --host 0.0.0.0 --port ${PORT}"
+cmd = "cd backend && python3 -m uvicorn main:app --host 0.0.0.0 --port ${PORT}"
