@@ -2,5 +2,5 @@
 cmds = ["pip install -r backend/requirements.txt"]
 
 [start]
-# Мы говорим Python, что папка backend является источником модулей
-cmd = "PYTHONPATH=$PYTHONPATH:./backend uvicorn backend.main:app --host 0.0.0.0 --port ${PORT}"
+# Переходим в backend, добавляем текущую папку в пути поиска Python и запускаем
+cmd = "cd backend && PYTHONPATH=. uvicorn main:app --host 0.0.0.0 --port ${PORT}"
