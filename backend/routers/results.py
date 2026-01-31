@@ -10,7 +10,7 @@ from sqlalchemy import func
 from database import get_db
 from models import User, Email, Result
 from schemas import EmailAnswer, ResultResponse, ResultHistoryItem, DashboardStats
-from auth import get_current_user
+from security import get_current_user
 from phishing_detector import calculate_risk_score
 
 router = APIRouter(prefix="/results", tags=["Results"])

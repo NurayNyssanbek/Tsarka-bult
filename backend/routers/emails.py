@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 from models import User, Email, Result
 from schemas import EmailResponse
-from auth import get_current_user
+from security import get_current_user
 
 router = APIRouter(prefix="/emails", tags=["Emails"])
 
