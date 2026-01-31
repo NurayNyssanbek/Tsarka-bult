@@ -10,15 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Копируем весь проект в контейнер
 COPY . .
 
-# Создаем __init__.py на всякий случай
-RUN touch backend/__init__.py
+ENV PYTHONPATH=/app/backend
 
-# Переходим в backend для запуска
-# Устанавливаем рабочую директорию в корень проекта
-WORKDIR /app
-
-# Копируем всё содержимое проекта
-COPY . .
-
-# Запускаем, указывая путь к main через точку
+# Запускаем через путь к модулю
 CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8080"]
